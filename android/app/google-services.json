@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399976551727",
+    "project_id": "sharetableapp",
+    "storage_bucket": "sharetableapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399976551727:android:f38e5eddf9be3ca4067dda",
+        "android_client_info": {
+          "package_name": "com.skanda.sharetableapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxe9QHW7CgcxWROUIEpelC1VkHmXawiKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

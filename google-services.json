@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "399976551727",
+    "project_id": "sharetableapp",
+    "storage_bucket": "sharetableapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399976551727:android:f38e5eddf9be3ca4067dda",
+        "android_client_info": {
+          "package_name": "com.skanda.sharetableapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399976551727-rhhusn1qgm732tuils0mifoj6uot4pih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skanda.sharetableapp",
+            "certificate_hash": "6880cdf2a730d2630effedd90d6aa4916184e549"
+          }
+        },
+        {
+          "client_id": "399976551727-6tml8b2ea8iunqgd6j68adu977df4oq9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxe9QHW7CgcxWROUIEpelC1VkHmXawiKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399976551727-6tml8b2ea8iunqgd6j68adu977df4oq9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "399976551727-srna5f66lu20vdkfh83qmb1tsb0ruj5o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.skanda.sharetableapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
