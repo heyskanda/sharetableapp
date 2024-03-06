@@ -68,7 +68,8 @@ function RootLayoutNav() {
       tertiary: '#20AB98',
       primaryContainer: '#34d399',
       secondaryContainer: '#ACE4CE',
-      tertiaryContainer: '#7EC0B7',
+      tertiaryContainer: '#c7f0ea',
+      surfaceVariant: '#dff5f2',
       plain: 'white',
     }
   }
