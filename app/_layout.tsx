@@ -1,13 +1,17 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { PaperProvider, MD3DarkTheme, MD3LightTheme } from 'react-native-paper';
-import { Header } from '@/components/Header';
+import { PaperProvider, MD3DarkTheme, MD3LightTheme, useTheme } from 'react-native-paper';
+import HeaderRight from '@/components/HeaderRight';
+import { Drawer } from 'expo-router/drawer';
+import DrawerContent from '@/components/Drawer';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RNPDarkTheme, RNPLightTheme } from '@/utils/themeUtils';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -57,52 +61,57 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-  
-  const RNPLightTheme = {
-    ...MD3LightTheme,
-    myOwnProperty: true,
-    colors: {
-      ...MD3LightTheme.colors,
-      primary: '#059669',
-      secondary: '#3F8871',
-      tertiary: '#20AB98',
-      primaryContainer: '#34d399',
-      secondaryContainer: '#ACE4CE',
-      tertiaryContainer: '#c7f0ea',
-      surfaceVariant: '#dff5f2',
-      plain: 'white',
-    }
-  }
-
-  const RNPDarkTheme = {
-    ...MD3DarkTheme,
-    myOwnProperty: true,
-    colors: {
-      ...MD3DarkTheme.colors,
-      primary: 'white',
-      secondary: '#1EC677',
-      primaryContainer: '#00B14F',
-    }
-  }
+  const queryClient = new QueryClient();
 
   return (
-    <PaperProvider theme={colorScheme === 'dark' ? RNPDarkTheme : RNPLightTheme}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen 
-            name="(tabs)" 
-            options={{ 
-              header: () => <Header />
-            }} 
-          />
-          {/* <Stack.Screen 
-            name="(auth)" 
-            options={{ 
-              header: () => <Header />
-            }} 
-          /> */}
-        </Stack>
-      </ThemeProvider>
-    </PaperProvider>
+    <QueryClientProvider client={queryClient}>
+      <PaperProvider theme={colorScheme === 'dark' ? RNPDarkTheme : RNPLightTheme}>
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Drawer drawerContent={DrawerContent}>
+            <Drawer.Screen 
+              name="(tabs)"
+              options={{
+                drawerLabel: 'Discover',
+                title: 'Discover',
+                drawerIcon: ({ color, size, focused }) => <Ionicons name={focused ? "compass" : "compass-outline"} size={26} color={color} />,
+                headerShown: false,
+              }}
+            />
+            <Drawer.Screen 
+              name="referral"
+              options={{
+                drawerLabel: 'Referral',
+                title: 'Referral',
+                drawerIcon: ({ color, size, focused }) => <MaterialCommunityIcons name={focused ? "share-variant" : "share-variant-outline"} size={24} color={color} />,
+              }}
+            />
+            <Drawer.Screen 
+              name="subscription"
+              options={{
+                drawerLabel: 'Subscription',
+                title: 'Subscription',
+                drawerIcon: ({ color, size, focused }) => <MaterialCommunityIcons name={focused ? "label-percent" : "label-percent-outline"} size={26} color={color} />,
+              }}
+            />
+            <Drawer.Screen 
+              name="(auth)/login"
+              options={{
+                drawerLabel: 'Login',
+                title: 'Login',
+                headerRight: () => <HeaderRight />
+              }}
+            />
+            <Drawer.Screen 
+              name="notifications"
+              options={{
+                drawerLabel: 'Notifications',
+                title: 'Notifications',
+                headerShown: true
+              }}
+            />
+          </Drawer>
+        </ThemeProvider>
+      </PaperProvider>
+    </QueryClientProvider>
   );
 }
