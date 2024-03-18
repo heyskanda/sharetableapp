@@ -1,16 +1,17 @@
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useAppTheme } from '@/utils/themeUtils';
+import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { useRouter } from 'expo-router';
 import * as React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
-import { Drawer, useTheme } from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { Drawer } from 'react-native-paper';
 
 const DrawerContent = (props: any) => {
   const router = useRouter()
-  const theme = useTheme()
+  const theme = useAppTheme()
 
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView {...props} style={{ backgroundColor: theme.colors.surfaceContainer }}>
       <View style={styles.container}>
         <View style={styles.logo}>
           <Ionicons name="logo-codepen" size={52} color="black" />
@@ -26,9 +27,20 @@ const DrawerContent = (props: any) => {
               />
             )}
             label="Profile"
-            onPress={() => router.push('/account')}
+            onPress={() => router.push('/subscription')}
           />
           <DrawerItem
+            icon={({ color, size }) => (
+              <MaterialIcons
+                name="add"
+                color={color}
+                size={size}
+              />
+            )}
+            label="Login"
+            onPress={() => router.push('/(auth)/login')}
+          />
+          {/* <DrawerItem
             icon={({ color, size, focused }) => (
               <MaterialCommunityIcons name="share-variant-outline" size={size} color={color} />
             )}
@@ -41,7 +53,7 @@ const DrawerContent = (props: any) => {
             )}
             label="Subscription"
             onPress={() => router.push('/subscription')}
-          />
+          /> */}
           <DrawerItem
             icon={({ color, size, focused }) => (
               <MaterialCommunityIcons name="logout" size={size} color={color} />
