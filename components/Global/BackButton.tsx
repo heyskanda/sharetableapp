@@ -1,4 +1,4 @@
-import { useAppTheme } from '@/app/_layout';
+import { useAppTheme } from '@/utils/themeUtils';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
@@ -25,6 +25,6 @@ export default BackButton;
 const styles = StyleSheet.create({
   button: {
     marginLeft: 12,
-    padding: 12,
+    padding: 8,
   }
 });
