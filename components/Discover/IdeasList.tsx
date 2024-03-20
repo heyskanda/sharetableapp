@@ -5,32 +5,44 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import IdeaCard from '../Global/IdeaCard'
 import { useRouter } from 'expo-router'
+import { useAppTheme } from '@/utils/themeUtils'
 
-export const IdeasList = () => {
-    const theme:any = useTheme()
+export const IdeasList = ({ ideasData }: any) => {
+    const theme = useAppTheme()
     const router = useRouter()
 
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, backgroundColor: theme.colors.surfaceContainer }}>
             <View style={styles.heading}>
                 <View style={styles.title}>
-                    <Text variant='titleMedium' style={{ fontFamily: 'MerriweatherBold' }}>
-                        Latest ideas &nbsp; <MaterialCommunityIcons name="lightbulb-on-outline" style={{ color: theme.colors.primaryLight }} size={21} />
+                    <Text variant='titleMedium' style={{ fontFamily: 'MerriweatherBold', color: theme.colors.primary }}>
+                        Latest ideas &nbsp; <MaterialCommunityIcons name="lightbulb-on-outline" style={{ color: theme.colors.primary }} size={21} />
                     </Text>
-                    <Text variant='bodySmall' style={{ fontFamily: 'PoppinsRegular' }}>
+                    <Text variant='bodySmall' style={{ fontFamily: 'PoppinsRegular', color: theme.colors.secondary }}>
                         Check out the latest calls
                     </Text>
                 </View>
                 <TouchableOpacity>
-                    <Button mode='text' labelStyle={{ fontFamily: 'MerriweatherBold', fontSize: 12 }} onPress={() => router.push('/ideas')}>
+                    <Button mode='text' labelStyle={{ fontFamily: 'MerriweatherBold', fontSize: 12, textDecorationLine: 'underline' }} onPress={() => router.push('/ideas')}>
                         Show all
                     </Button>
                 </TouchableOpacity>
             </View>
 
-            <ScrollView contentContainerStyle={styles.cardContainer} showsHorizontalScrollIndicator={false} horizontal>
-                <IdeaCard width={280} height={200} />
-                <IdeaCard width={280} height={200} />
+            <ScrollView 
+                contentContainerStyle={styles.cardContainer} 
+                showsHorizontalScrollIndicator={false} 
+                horizontal
+            >
+            {
+                ideasData 
+                    ? ideasData?.map((idea: any, i: number) => (
+                        <IdeaCard width={280} height={200} key={i} ideaData={idea} />
+                    ))
+                    : <Text variant='bodySmall' style={{ fontFamily: 'PoppinsRegular', color: theme.colors.tertiary }}>
+                        No latest recommendations.
+                    </Text>
+            }
             </ScrollView>
         </View>
     )
@@ -39,7 +51,9 @@ export const IdeasList = () => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        gap: 18
+        gap: 18,
+        padding: 12,
+        borderRadius: 8
     },
     heading: {
         flexDirection: 'row',
