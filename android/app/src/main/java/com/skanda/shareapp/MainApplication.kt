@@ -1,4 +1,4 @@
-package com.skanda.sharetableapp
+package com.skanda.shareapp
 
 import android.app.Application
 import android.content.res.Configuration
