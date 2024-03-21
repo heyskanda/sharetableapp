@@ -3,11 +3,10 @@ import { Text, View } from './Themed'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Link, useRouter } from 'expo-router'
-import { useTheme } from 'react-native-paper'
-import { DefaultTheme } from '@react-navigation/native'
+import { useAppTheme } from '@/utils/theme-provider'
 
 export const Header = () => {
-  const theme = useTheme()
+  const theme = useAppTheme()
   const router = useRouter()
 
   return (

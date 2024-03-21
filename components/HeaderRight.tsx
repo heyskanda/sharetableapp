@@ -1,4 +1,4 @@
-import { useAppTheme } from '@/app/_layout';
+import { useAppTheme } from '@/utils/theme-provider';
 import { Entypo, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import * as React from 'react';

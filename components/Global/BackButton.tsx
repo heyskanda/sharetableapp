@@ -1,4 +1,4 @@
-import { useAppTheme } from '@/utils/themeUtils';
+import { useAppTheme } from '@/utils/theme-provider';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';

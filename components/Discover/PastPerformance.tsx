@@ -1,4 +1,4 @@
-import { useAppTheme } from '@/utils/themeUtils';
+import { useAppTheme } from '@/utils/theme-provider';
 import { AntDesign } from '@expo/vector-icons';
 import * as React from 'react';
 import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';

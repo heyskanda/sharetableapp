@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import IdeaCard from '../Global/IdeaCard'
 import { useRouter } from 'expo-router'
-import { useAppTheme } from '@/utils/themeUtils'
+import { useAppTheme } from '@/utils/theme-provider'
 
 export const IdeasList = ({ ideasData }: any) => {
     const theme = useAppTheme()

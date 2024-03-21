@@ -1,10 +1,9 @@
-import { useAppTheme } from '@/app/_layout';
+import { useAppTheme } from '@/utils/theme-provider';
 import { Entypo } from '@expo/vector-icons';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from 'expo-router';
 import * as React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { useTheme } from 'react-native-paper';
 
 interface HeaderLeftProps {}
 
