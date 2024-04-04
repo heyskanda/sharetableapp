@@ -3,14 +3,22 @@ import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
-interface LoadingIndicatorProps {}
+interface LoadingIndicatorProps {
+  size?: 'large' | 'small'
+  backgroundColor?: string
+  indicatorColor?: string
+}
 
-export const LoadingIndicator = (props: LoadingIndicatorProps) => {
+export const LoadingIndicator = ({
+  size = 'large',
+  backgroundColor,
+  indicatorColor
+}: LoadingIndicatorProps) => {
   const theme = useAppTheme()
 
   return (
-    <View style={{ ...styles.container, backgroundColor: theme.colors.surface }}>
-      <ActivityIndicator size={'large'} />
+    <View style={{ ...styles.container, backgroundColor: backgroundColor ?? theme.colors.surface }}>
+      <ActivityIndicator size={size} />
     </View>
   );
 };
